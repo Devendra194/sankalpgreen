@@ -1,0 +1,73 @@
+:root {
+  /* Light mode colors */
+  --primary-green: #4CAF50;
+  --secondary-green: #81C784;
+  --light-green: #E8F5E9;
+  --white: #FFFFFF;
+  --dark-gray: #333333;
+  --light-gray: #F5F5F5;
+  --medium-gray: #666666;
+  --border-color: #E0E0E0;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] {
+  /* Dark mode colors */
+  --primary-green: #66BB6A;
+  --secondary-green: #4CAF50;
+  --light-green: #1B2F1C;
+  --white: #121212;
+  --dark-gray: #E0E0E0;
+  --light-gray: #1E1E1E;
+  --medium-gray: #B0B0B0;
+  --border-color: #333333;
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --text-primary: #E0E0E0;
+  --text-secondary: #B0B0B0;
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-card: #1F1F1F;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --card-bg: rgba(31, 31, 31, 0.9);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .leaflet-container {
+  filter: brightness(0.8) contrast(1.2);
+}
+
+[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .leaflet-popup-tip {
+  background: var(--bg-card) !important;
+}
+
+[data-theme="dark"] .leaflet-control-layers {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .leaflet-control-zoom a {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}

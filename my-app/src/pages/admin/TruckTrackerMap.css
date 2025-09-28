@@ -1,0 +1,554 @@
+/* Admin Truck Tracker Specific Styles */
+
+.action-btn.toggle {
+  background: linear-gradient(45deg, #FF9800, #FFB74D);
+  color: white;
+}
+
+.action-btn.toggle.active {
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+}
+
+.action-btn.emergency {
+  background: linear-gradient(45deg, #f44336, #e57373);
+  color: white;
+}
+
+.action-btn.emergency:hover {
+  background: linear-gradient(45deg, #d32f2f, #f44336);
+  transform: translateY(-2px);
+}
+
+/* Main Map Layout */
+.map-tracker-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Real Map Container */
+.real-map-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.leaflet-map {
+  border-radius: 12px;
+}
+
+/* Custom Marker Styles */
+.custom-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.marker-container.selected {
+  animation: markerBounce 1s infinite;
+}
+
+@keyframes markerBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.marker-icon {
+  font-size: 24px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+  z-index: 2;
+}
+
+.marker-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--marker-color);
+  opacity: 0.6;
+  animation: mapPulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes mapPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Popup Styles */
+.popup-content {
+  font-family: 'Poppins', sans-serif;
+  min-width: 200px;
+}
+
+.popup-content h4 {
+  margin: 0 0 12px 0;
+  color: var(--primary-green);
+  font-size: 1.1rem;
+}
+
+.popup-content p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+.popup-content strong {
+  color: var(--dark-gray);
+}
+
+.popup-actions {
+  margin-top: 12px;
+}
+
+.popup-actions button {
+  padding: 6px 12px;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.waste-types-popup {
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+/* Info Panel */
+.map-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.map-info-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.map-info-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.map-info-panel::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 3px;
+}
+
+/* Selected Truck Info */
+.selected-truck-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.truck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.truck-header h3 {
+  margin: 0;
+  color: var(--dark-gray);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Truck Details Grid */
+.truck-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-item .label {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.detail-item .value {
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+/* Truck Progress Visual */
+.truck-progress-visual {
+  margin-bottom: 16px;
+}
+
+.truck-progress-visual h4 {
+  margin: 0 0 8px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.truck-progress-visual .progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.truck-progress-visual .progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+  text-align: center;
+  display: block;
+}
+
+/* Truck Actions */
+.truck-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.truck-action-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.truck-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.truck-action-btn.call {
+  background: #4CAF50;
+  color: white;
+}
+
+.truck-action-btn.message {
+  background: #2196F3;
+  color: white;
+}
+
+.truck-action-btn.center {
+  background: #FF9800;
+  color: white;
+}
+
+/* Admin Dispatch Controls */
+.admin-dispatch-controls {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.admin-dispatch-controls h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.dispatch-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dispatch-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.dispatch-buttons button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dispatch-buttons button:nth-child(1) {
+  background: #2196F3;
+  color: white;
+}
+
+.dispatch-buttons button:nth-child(2) {
+  background: #f44336;
+  color: white;
+}
+
+.dispatch-buttons button:nth-child(3) {
+  background: #FF9800;
+  color: white;
+}
+
+/* Default Map Info */
+.default-map-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.default-map-info h3 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+}
+
+.default-map-info p {
+  margin: 0 0 20px 0;
+  color: #888;
+}
+
+/* Map Legend */
+.map-legend h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+.legend-icon {
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+/* Fleet Overview */
+.fleet-overview {
+  margin-top: 20px;
+}
+
+.fleet-overview h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+}
+
+.nearby-truck-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--light-gray);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nearby-truck-item:hover {
+  background: var(--light-green);
+  transform: translateX(4px);
+}
+
+.nearby-truck-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nearby-truck-info strong {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+.nearby-truck-info small {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.nearby-status {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Yards Summary */
+.yards-summary {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.yards-summary h4 {
+  margin: 0 0 16px 0;
+  color: var(--dark-gray);
+}
+
+.yard-summary-item {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid var(--primary-green);
+  background: var(--light-gray);
+}
+
+.yard-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.yard-summary-header strong {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+.yard-summary-status {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+.yard-summary-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Leaflet Map Customizations */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+.leaflet-control-zoom a {
+  background-color: var(--primary-green) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: var(--secondary-green) !important;
+}
+
+.leaflet-control-attribution {
+  font-size: 0.7rem !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .map-tracker-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .map-info-panel {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .tracker-actions {
+    flex-direction: column;
+  }
+  
+  .truck-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .truck-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .dispatch-buttons {
+    flex-direction: column;
+  }
+  
+  .real-map-container .leaflet-map {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .real-map-container .leaflet-map {
+    height: 350px !important;
+  }
+  
+  .marker-icon {
+    font-size: 20px;
+  }
+  
+  .marker-container {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,992 @@
+/* Truck Tracker Specific Styles */
+
+.tracker-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn.refresh {
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.action-btn.location {
+  background: linear-gradient(45deg, #2196F3, #64B5F6);
+  color: white;
+}
+
+/* Main Tracker Layout */
+.tracker-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Map Container */
+.map-container {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.map-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.map-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.map-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.map-btn.active {
+  background: var(--primary-green);
+  color: white;
+}
+
+.map-btn:hover:not(.active) {
+  background: var(--light-green);
+  color: var(--primary-green);
+}
+
+/* Interactive Map */
+.interactive-map {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 50%, #A5D6A7 100%);
+  overflow: hidden;
+}
+
+/* Leaflet Map Container */
+.leaflet-map-container {
+  height: 500px;
+  width: 100%;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.leaflet-map {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+}
+
+/* Custom marker animations */
+.custom-user-marker div {
+  animation: userPulse 2s infinite !important;
+}
+
+@keyframes userPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.custom-truck-marker div {
+  transition: all 0.3s ease;
+}
+
+.custom-truck-marker:hover div {
+  transform: scale(1.1);
+}
+
+.custom-yard-marker div {
+  transition: all 0.3s ease;
+}
+
+.custom-yard-marker:hover div {
+  transform: scale(1.05);
+}
+
+/* User Location Marker Styling */
+.user-location-marker {
+  background-color: #FF1744;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.user-location-marker::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: rgba(255, 23, 68, 0.3);
+  animation: userPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes userPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Leaflet Popup Styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.popup-content {
+  padding: 8px 0;
+  min-width: 200px;
+}
+
+.popup-content h4 {
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.popup-content p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.popup-content p strong {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.popup-buttons .detail-btn {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+
+.popup-content .waste-types {
+  margin-top: 8px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.popup-content .waste-type-tag {
+  padding: 2px 6px;
+  background: var(--light-green);
+  color: var(--primary-green);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.popup-content .status-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Map Markers */
+.map-marker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s, z-index 0s;
+}
+
+.map-marker:hover {
+  transform: scale(1.1);
+  z-index: 20;
+}
+
+.marker-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  transition: transform 0.3s;
+}
+
+.marker-label {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 4px;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* User Location */
+.user-location .marker-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2196F3;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+.user-location .marker-icon {
+  font-size: 2rem;
+  color: #2196F3;
+}
+
+.user-location .marker-label {
+  background: #2196F3;
+  color: white;
+  font-weight: 600;
+}
+
+/* Truck Markers */
+.truck-marker {
+  animation: truckMove 8s linear infinite;
+}
+
+.truck-marker.selected {
+  transform: scale(1.2);
+  z-index: 30;
+}
+
+.truck-marker.selected .marker-icon {
+  animation: bounce 1s infinite;
+}
+
+@keyframes truckMove {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(5px) translateY(-3px); }
+  50% { transform: translateX(10px) translateY(0); }
+  75% { transform: translateX(5px) translateY(3px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.truck-animation {
+  position: relative;
+}
+
+.truck-trail {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--status-color, #4CAF50), transparent);
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  animation: trail 2s ease-in-out infinite;
+}
+
+@keyframes trail {
+  0% { width: 0; opacity: 0; }
+  50% { width: 30px; opacity: 0.7; }
+  100% { width: 0; opacity: 0; }
+}
+
+/* Truck Status Colors */
+.truck-marker.collecting .marker-icon { color: #4CAF50; }
+.truck-marker.en-route .marker-icon { color: #2196F3; }
+.truck-marker.dumping .marker-icon { color: #FF9800; }
+.truck-marker.maintenance .marker-icon { color: #f44336; }
+
+/* Yard Markers */
+.yard-marker {
+  position: relative;
+}
+
+.yard-marker .marker-icon {
+  font-size: 2rem;
+  color: var(--status-color, #4CAF50);
+}
+
+.capacity-indicator {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  min-width: 30px;
+  overflow: hidden;
+}
+
+.capacity-indicator::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--status-color, #4CAF50);
+  width: var(--capacity, 50%);
+  transition: width 0.3s;
+}
+
+.capacity-text {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  color: var(--dark-gray);
+  font-weight: 600;
+  background: white;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+/* Yard Status Colors */
+.yard-marker.operational .marker-icon { color: #4CAF50; }
+.yard-marker.warning .marker-icon { color: #FF9800; }
+.yard-marker.critical .marker-icon { color: #f44336; }
+
+/* Route Overlay */
+.route-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.route-overlay path {
+  animation: dashFlow 3s linear infinite;
+}
+
+@keyframes dashFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+/* Map Legend */
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px;
+  background: rgba(255,255,255,0.9);
+  border-top: 1px solid #e0e0e0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+}
+
+.legend-marker {
+  font-size: 1rem;
+}
+
+.legend-marker.user { color: #2196F3; }
+.legend-marker.truck { color: #4CAF50; }
+.legend-marker.yard { color: #FF9800; }
+
+/* Info Panel */
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.info-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.info-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.info-panel::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 3px;
+}
+
+/* Truck Details */
+.truck-details {
+  background: var(--bg-primary);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.detail-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.collecting {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.status-badge.en-route {
+  background: #E3F2FD;
+  color: #2196F3;
+}
+
+.status-badge.dumping {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.status-badge.maintenance {
+  background: #FFEBEE;
+  color: #f44336;
+}
+
+/* Truck Info Grid */
+.truck-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-bottom: 16px;
+}
+
+.progress-section h4 {
+  margin: 0 0 8px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+  text-align: center;
+}
+
+/* Truck Capacity */
+.truck-capacity {
+  margin-bottom: 16px;
+}
+
+.truck-capacity h4 {
+  margin: 0 0 8px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.capacity-visual {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.capacity-bar {
+  width: 30px;
+  height: 60px;
+  background: #e0e0e0;
+  border-radius: 4px 4px 8px 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.capacity-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--primary-green), var(--secondary-green));
+  transition: height 0.5s ease;
+  border-radius: 0 0 8px 8px;
+}
+
+.capacity-percentage {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.detail-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.detail-btn:hover {
+  transform: translateY(-1px);
+}
+
+.detail-btn.call {
+  background: #4CAF50;
+  color: white;
+}
+
+.detail-btn.message {
+  background: #2196F3;
+  color: white;
+}
+
+.detail-btn.route {
+  background: #FF9800;
+  color: white;
+}
+
+/* Default Info */
+.default-info {
+  background: var(--bg-primary);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.default-info h3 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.default-info p {
+  margin: 0 0 20px 0;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Quick Stats */
+.quick-stats h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--light-gray);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.stat-row span:first-child {
+  color: #888;
+}
+
+.stat-row span:last-child {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* Nearby Trucks */
+.nearby-trucks {
+  margin-top: 20px;
+}
+
+.nearby-trucks h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+}
+
+.nearby-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--light-gray);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nearby-item:hover {
+  background: var(--light-green);
+  transform: translateX(4px);
+}
+
+.nearby-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nearby-info strong {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+.distance {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.nearby-status {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nearby-status.collecting { background: #E8F5E9; color: #4CAF50; }
+.nearby-status.en-route { background: #E3F2FD; color: #2196F3; }
+.nearby-status.dumping { background: #FFF3E0; color: #FF9800; }
+.nearby-status.maintenance { background: #FFEBEE; color: #f44336; }
+
+/* Yards Section */
+.yards-section {
+  background: var(--bg-primary);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yards-section h3 {
+  margin: 0 0 16px 0;
+  color: var(--dark-gray);
+}
+
+.yards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.yard-item {
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  transition: transform 0.3s;
+}
+
+.yard-item:hover {
+  transform: translateY(-2px);
+}
+
+.yard-item.operational {
+  background: #E8F5E9;
+  border-left-color: #4CAF50;
+}
+
+.yard-item.warning {
+  background: #FFF3E0;
+  border-left-color: #FF9800;
+}
+
+.yard-item.critical {
+  background: #FFEBEE;
+  border-left-color: #f44336;
+}
+
+.yard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.yard-header strong {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+.yard-status {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.yard-status.operational { background: #4CAF50; color: white; }
+.yard-status.warning { background: #FF9800; color: white; }
+.yard-status.critical { background: #f44336; color: white; }
+
+.yard-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.yard-metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+}
+
+.mini-bar {
+  flex: 1;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mini-fill {
+  height: 100%;
+  background: var(--primary-green);
+  transition: width 0.3s;
+}
+
+.yard-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.waste-types {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.waste-type-tag {
+  padding: 2px 6px;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  color: var(--dark-gray);
+  border: 1px solid #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .tracker-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .interactive-map {
+    height: 400px;
+  }
+  
+  .leaflet-map-container {
+    height: 400px;
+  }
+  
+  .info-panel {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .tracker-actions {
+    flex-direction: column;
+  }
+  
+  .map-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .map-controls {
+    justify-content: center;
+  }
+  
+  .interactive-map {
+    height: 350px;
+  }
+  
+  .leaflet-map-container {
+    height: 350px;
+  }
+  
+  .truck-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .map-legend {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .interactive-map {
+    height: 300px;
+  }
+  
+  .leaflet-map-container {
+    height: 300px;
+  }
+  
+  .marker-label {
+    display: none;
+  }
+  
+  .map-marker:hover .marker-label {
+    display: block;
+  }
+}

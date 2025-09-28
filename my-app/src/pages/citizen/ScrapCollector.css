@@ -1,0 +1,806 @@
+/* Scrap Collector Specific Styles */
+
+.scrap-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn.refresh {
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.action-btn.location {
+  background: linear-gradient(45deg, #2196F3, #64B5F6);
+  color: white;
+}
+
+/* Main Scrap Layout */
+.scrap-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Map Container */
+.map-container {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.map-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.map-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s ease, color 0.3s ease;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+/* Leaflet Map Integration */
+.leaflet-map-container {
+  height: 500px;
+  width: 100%;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.leaflet-map {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+}
+
+/* Custom marker animations */
+.custom-collector-marker div {
+  transition: all 0.3s ease;
+}
+
+.custom-collector-marker:hover div {
+  transform: scale(1.15);
+}
+
+/* User Location Marker Styling */
+.user-location-marker {
+  background-color: #FF1744;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.user-location-marker::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: rgba(255, 23, 68, 0.3);
+  animation: userPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes userPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Map Legend */
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.legend-marker {
+  font-size: 1rem;
+}
+
+.legend-marker.user { color: #2196F3; }
+.legend-marker.collector { color: #4CAF50; }
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.legend-color.excellent { background: #4CAF50; }
+.legend-color.good { background: #2196F3; }
+
+/* Collectors Panel */
+.collectors-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.collectors-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.collectors-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.collectors-panel::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 3px;
+}
+
+/* Collector Details */
+.collector-details {
+  background: var(--bg-primary);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--light-green);
+}
+
+.detail-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.excellent {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.status-badge.good {
+  background: #E3F2FD;
+  color: #2196F3;
+}
+
+.status-badge.average {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.verified-badge {
+  padding: 2px 8px;
+  background: #E8F5E9;
+  color: #4CAF50;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Collector Info Grid */
+.collector-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Specialties Section */
+.specialties-section {
+  margin-bottom: 20px;
+}
+
+.specialties-section h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.specialties-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.specialty-tag {
+  padding: 6px 12px;
+  background: var(--light-green);
+  color: var(--primary-green);
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Services Section */
+.services-section {
+  margin-bottom: 20px;
+}
+
+.services-section h4 {
+  margin: 0 0 12px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+.service-icon {
+  color: var(--primary-green);
+  font-size: 0.8rem;
+}
+
+/* Description Section */
+.description-section {
+  margin-bottom: 20px;
+}
+
+.description-section h4 {
+  margin: 0 0 8px 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.description-section p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* Business Info */
+.business-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(52, 73, 94, 0.05);
+  border-radius: 8px;
+}
+
+.business-stat {
+  text-align: center;
+}
+
+.business-stat .stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.business-stat .stat-value {
+  font-size: 0.9rem;
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.detail-btn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.detail-btn:hover {
+  transform: translateY(-2px);
+}
+
+.detail-btn.call {
+  background: #4CAF50;
+  color: white;
+  box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+}
+
+.detail-btn.call:hover {
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.detail-btn.message {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+}
+
+.detail-btn.message:hover {
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.detail-btn.direction {
+  background: #2196F3;
+  color: white;
+  box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+}
+
+.detail-btn.direction:hover {
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
+/* Collectors List */
+.collectors-list h3 {
+  margin: 0 0 16px 0;
+  color: var(--dark-gray);
+  font-size: 1.2rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--light-green);
+}
+
+.collector-item {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  border-left: 4px solid transparent;
+  position: relative;
+}
+
+.collector-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.collector-item.excellent {
+  border-left-color: #4CAF50;
+}
+
+.collector-item.good {
+  border-left-color: #2196F3;
+}
+
+.collector-item.average {
+  border-left-color: #FF9800;
+}
+
+.collector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.collector-info h4 {
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.collector-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.rating {
+  font-size: 0.8rem;
+  color: #FF9800;
+  font-weight: 600;
+}
+
+.distance {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: rgba(33, 150, 243, 0.1);
+  padding: 2px 8px;
+  border-radius: 8px;
+  transition: color 0.3s ease;
+}
+
+.verified {
+  font-size: 0.7rem;
+}
+
+.price-range {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  background: var(--light-green);
+  padding: 6px 12px;
+  border-radius: 16px;
+  /* Reserve space for quick action buttons so they don't overlap */
+  margin-right: 76px;
+}
+
+.collector-details-preview {
+  margin-bottom: 12px;
+}
+
+.specialties-preview {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.specialty-chip {
+  padding: 3px 8px;
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--primary-green);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.collector-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.owner, .hours {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Quick Actions */
+.quick-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+}
+
+.quick-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.quick-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.quick-btn.call {
+  background: #4CAF50;
+  color: white;
+}
+
+.quick-btn.message {
+  background: #25D366;
+  color: white;
+}
+
+/* Popup Content Styling */
+.popup-content {
+  padding: 8px 0;
+  min-width: 250px;
+}
+
+.popup-content h4 {
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.popup-content p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.popup-content p strong {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.popup-buttons .detail-btn {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .scrap-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .leaflet-map-container {
+    height: 400px;
+  }
+  
+  .collectors-panel {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrap-actions {
+    flex-direction: column;
+  }
+  
+  .map-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .map-controls {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .filter-select {
+    flex: 1;
+  }
+  
+  .leaflet-map-container {
+    height: 350px;
+  }
+  
+  .collector-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .business-info {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .collector-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .quick-actions {
+    position: static;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+  
+  /* Reset the reserved space on small screens */
+  .price-range {
+    margin-right: 0;
+  }
+  
+  .map-legend {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaflet-map-container {
+    height: 300px;
+  }
+  
+  .specialties-preview {
+    justify-content: center;
+  }
+  
+  .collector-status {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  
+  .popup-content {
+    min-width: 200px;
+  }
+}
+
+/* Focus styles for accessibility */
+.filter-select:focus,
+.detail-btn:focus,
+.quick-btn:focus,
+.collector-item:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Loading and error states */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #f44336;
+  text-align: center;
+}
+
+.error-state button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Animation for collector items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.collector-item {
+  animation: fadeInUp 0.3s ease;
+}
